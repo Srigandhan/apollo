@@ -514,3 +514,7 @@ DEFINE_bool(enable_nonscenario_side_pass, false,
 
 DEFINE_bool(enable_soft_speed_limit, false,
             "True to set soft speed limit guided by path optimization result");
+
+//Added for Dummy Planner
+DEFINE_bool(enable_dummy_planner,true, 
+            "true for using dummy planner that is created newly");

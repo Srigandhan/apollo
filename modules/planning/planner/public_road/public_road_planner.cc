@@ -27,6 +27,8 @@ using common::Status;
 using common::TrajectoryPoint;
 
 Status PublicRoadPlanner::Init(const PlanningConfig& config) {
+
+  ADEBUG << "DEBUG_SVS : Init module for PublicRoadPlanner";
   config_ = config;
   std::set<ScenarioConfig::ScenarioType> supported_scenarios;
   const auto& public_road_config =
@@ -45,6 +47,9 @@ Status PublicRoadPlanner::Init(const PlanningConfig& config) {
 Status PublicRoadPlanner::Plan(const TrajectoryPoint& planning_start_point,
                                Frame* frame,
                                ADCTrajectory* ptr_computed_trajectory) {
+
+  ADEBUG << "DEBUG_SVS : Planning module for PublicRoadPlanner";
+
   DCHECK_NOTNULL(frame);
   scenario_manager_.Update(planning_start_point, *frame);
   scenario_ = scenario_manager_.mutable_scenario();

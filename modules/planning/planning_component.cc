@@ -27,6 +27,9 @@
 #include "modules/planning/on_lane_planning.h"
 #include "modules/planning/open_space_planning.h"
 
+//included for adding adebug 
+#include "cyber/common/log.h"
+
 namespace apollo {
 namespace planning {
 
@@ -38,6 +41,10 @@ using apollo::routing::RoutingRequest;
 using apollo::routing::RoutingResponse;
 
 bool PlanningComponent::Init() {
+
+  ADEBUG << "DEBUG_SVS : Debug" << FLAGS_use_navigation_mode << " Flags"<<FLAGS_use_navigation_mode;
+
+
   if (FLAGS_open_space_planner_switchable) {
     planning_base_ = std::make_unique<OpenSpacePlanning>();
   } else {
@@ -93,6 +100,7 @@ bool PlanningComponent::Init() {
   rerouting_writer_ =
       node_->CreateWriter<RoutingRequest>(FLAGS_routing_request_topic);
 
+ADEBUG <<"DEBUG_SVS: Reached end of the comp class and returning true";
   return true;
 }
 

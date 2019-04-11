@@ -26,6 +26,13 @@ std::unique_ptr<Planner> OnLanePlannerDispatcher::DispatchPlanner() {
   PlanningConfig planning_config;
   apollo::cyber::common::GetProtoFromFile(FLAGS_planning_config_file,
                                           &planning_config);
+
+  ADEBUG << "DEBUG_SVS : OnLanePlannerDispatcher";
+  if(FLAGS_enable_dummy_planner){
+  	return planner_factory_.CreateObject(
+  	        planning_config.standard_planning_config().planner_type(2));
+  }
+  
   if (FLAGS_open_space_planner_switchable) {
     return planner_factory_.CreateObject(
         planning_config.standard_planning_config().planner_type(1));

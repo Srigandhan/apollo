@@ -258,6 +258,7 @@ enum PlannerType {
   OPEN_SPACE = 2;   // open space planner
   NAVI = 3;         // navigation planner
   LATTICE = 4;      // lattice planner
+  DUMMY = 5;        // Dummy Planner
 }
 
 message RtkPlanningConfig {
